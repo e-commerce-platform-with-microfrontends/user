@@ -8,7 +8,7 @@ export const FormContainer = styled.form`
   padding: ${({ theme }) => `${theme.gridSize * 2}px ${theme.gridSize * 3}px`};
   border: ${({ theme }) => `1px solid ${theme.colors.neutral[200]}`};
   border-radius: 8px;
-  transform: translate(50%, 50%);
+  margin: 20% auto 0;
 `;
 
 export const FormGroup = styled.div`

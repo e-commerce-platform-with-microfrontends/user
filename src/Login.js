@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { FormControl, Button, ButtonAction, ButtonSize } from 'ui-components';
+import { Link } from 'react-router-dom';
 
 import { API_ROOT } from './env';
 
-import * as S from './Login.styles';
+import * as S from './form.styles';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -20,7 +21,6 @@ export default function Login() {
   const login = async (e) => {
     e.preventDefault();
     const userDetails = { username, password };
-
     try {
       const response = await fetch(`${API_ROOT.DEV}/auth/login`, {
         method: 'POST',
@@ -30,11 +30,11 @@ export default function Login() {
         body: JSON.stringify(userDetails)
       });      
       if(!response.ok) {
-        throw new Error('Something went wrong')
+        throw new Error('username or password is incorrect')
       }
       alert('Logged in successfully');
     } catch (e) {
-      alert('something went wrong')
+      alert(e.message)
     }
   }
 
@@ -45,10 +45,10 @@ export default function Login() {
         </FormControl>
       </S.FormGroup>
       <S.FormGroup>
-        <FormControl label="Password" onChange={changePassword}>
+        <FormControl label="Password" type="password" onChange={changePassword}>
         </FormControl>
       </S.FormGroup>
-      <S.SignUp>Don't have an account, Please Signup</S.SignUp>
+      <S.SignUp>Don't have an account, Please register <Link to="/register">here</Link></S.SignUp>
       <Button
         id="login"
         buttonType={ButtonAction.PRIMARY}

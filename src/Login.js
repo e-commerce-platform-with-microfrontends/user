@@ -28,10 +28,13 @@ export default function Login() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(userDetails)
-      });      
-      if(!response.ok) {
+      });
+      if (!response.ok) {
         throw new Error('username or password is incorrect')
       }
+      const responseJson = await response.json();
+      const authToken = await responseJson.token;
+      sessionStorage.setItem("auth-token", authToken);
       alert('Logged in successfully');
     } catch (e) {
       alert(e.message)

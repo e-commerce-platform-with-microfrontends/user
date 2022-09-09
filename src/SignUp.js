@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { FormControl, Button, ButtonAction, ButtonSize } from 'ui-components';
 
-import { API_ROOT } from './env';
+import { FormControl, Button, ButtonAction, ButtonSize } from 'ui-components';
 
 import * as S from './Login.styles';
 
@@ -17,25 +16,8 @@ export default function Login() {
     setPassword(value);
   }
 
-  const login = async (e) => {
-    e.preventDefault();
-    const userDetails = { username, password };
-
-    try {
-      const response = await fetch(`${API_ROOT.DEV}/auth/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userDetails)
-      });      
-      if(!response.ok) {
-        throw new Error('Something went wrong')
-      }
-      alert('Logged in successfully');
-    } catch (e) {
-      alert('something went wrong')
-    }
+  const login = () => {
+    console.log(username, password);
   }
 
   return (

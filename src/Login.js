@@ -34,8 +34,9 @@ export default function Login() {
       }
       const responseJson = await response.json();
       const authToken = await responseJson.token;
-      sessionStorage.setItem("auth-token", authToken);
-      alert('Logged in successfully');
+      localStorage.setItem("authToken", authToken);
+      localStorage.setItem("isLoggedIn", true);
+      window.location.href = "http://localhost:3000/products/";
     } catch (e) {
       alert(e.message)
     }
@@ -51,7 +52,7 @@ export default function Login() {
         <FormControl label="Password" type="password" onChange={changePassword}>
         </FormControl>
       </S.FormGroup>
-      <S.SignUp>Don't have an account, Please register <Link to="/register">here</Link></S.SignUp>
+      <S.SignUp>Don't have an account, Please register <Link to="/register/">here</Link></S.SignUp>
       <Button
         id="login"
         buttonType={ButtonAction.PRIMARY}

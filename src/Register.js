@@ -67,7 +67,7 @@ export default function Register() {
         <FormControl label="Password" type="password" onChange={changePassword}>
         </FormControl>
       </S.FormGroup>
-      <S.SignUp>Already have an account, Please Login <Link to="/login">here</Link></S.SignUp>
+      <S.SignUp>Already have an account, Please Login <Link to="/login/">here</Link></S.SignUp>
       <Button
         id="register"
         buttonType={ButtonAction.PRIMARY}

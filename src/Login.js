@@ -36,7 +36,7 @@ export default function Login() {
       const authToken = await responseJson.token;
       localStorage.setItem("authToken", authToken);
       localStorage.setItem("isLoggedIn", true);
-      window.location.href = "http://localhost:3000/products/";
+      window.history.back();
     } catch (e) {
       alert(e.message)
     }

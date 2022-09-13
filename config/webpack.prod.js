@@ -11,7 +11,8 @@ const devConfig = {
     })  
   ],
   entry: {
-    user: './src/index.js'
+    user: './src/index.js',
+    userWithContainer: './src/indexWithContainer.js'
   },
   output: {
     filename: '[name].bundle.js',

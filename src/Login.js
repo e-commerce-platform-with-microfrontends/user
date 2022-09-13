@@ -6,7 +6,7 @@ import { API_ROOT } from './env';
 
 import * as S from './form.styles';
 
-export default function Login() {
+export default function Login({ onLoginSuccessful }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -37,8 +37,9 @@ export default function Login() {
       localStorage.setItem("authToken", authToken);
       localStorage.setItem("isLoggedIn", true);
       window.history.back();
+      if(onLoginSuccessful) onLoginSuccessful(authToken);
     } catch (e) {
-      alert(e.message)
+      alert(e.message);
     }
   }
 
@@ -52,7 +53,7 @@ export default function Login() {
         <FormControl label="Password" type="password" onChange={changePassword}>
         </FormControl>
       </S.FormGroup>
-      <S.SignUp>Don't have an account, Please register <Link to="/register/">here</Link></S.SignUp>
+      <S.SignUp>Don't have an account, Please register <Link to="/register">here</Link></S.SignUp>
       <Button
         id="login"
         buttonType={ButtonAction.PRIMARY}
